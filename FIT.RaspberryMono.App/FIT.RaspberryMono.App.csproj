@@ -47,18 +47,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Motori\Direkcija.cs" />
+    <Compile Include="Motori\StepMotor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebRezultat.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FIT.RaspberryMono.Helper\FIT.RaspberryMono.Helper.csproj">
-      <Project>{9f5cb658-6eb6-4a44-985e-74e7b0d79a5f}</Project>
-      <Name>FIT.RaspberryMono.Helper</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <Content Include="RaspberryPiDotNet.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
