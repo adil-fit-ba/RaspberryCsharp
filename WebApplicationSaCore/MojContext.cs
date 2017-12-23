@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
 
-namespace WebApplication1
+namespace WebApplicationSaCore
 {
     public class MojContext:DbContext
     {
@@ -12,7 +9,7 @@ namespace WebApplication1
         {
             base.OnConfiguring(optionsBuilder);
 
-            optionsBuilder.UseSqlServer("Server=app.fit.ba,1433;Database=RS1_online1;Trusted_Connection=false;MultipleActiveResultSets=true;User ID=nekiUser;Password=nekiPass");
+            optionsBuilder.UseSqlServer("Server=app.fit.ba,1432;Database=iot2;Trusted_Connection=false;MultipleActiveResultSets=true;User ID=iot2;Password=Ghin135^");
         }
 
         public DbSet<Komanda> komanda { get; set; }

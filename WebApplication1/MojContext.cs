@@ -9,7 +9,7 @@ namespace WebApplication1
 {
     public class MojContext:DbContext
     {
-        public MojContext():base("Server=app.fit.ba,1433;Database=RS1_online1;Trusted_Connection=false;MultipleActiveResultSets=true;User ID=nekiUser;Password=nekiPass")
+        public MojContext():base("Server=app.fit.ba,1432;Database=iot1;Trusted_Connection=false;MultipleActiveResultSets=true;User ID=iot1;Password=Ghin135^")
         {
             
         }
