@@ -3,7 +3,6 @@
 #include <errno.h>
 #include <stdlib.h>
 #include <wiringPi.h>
-#include <iostream>
 
 // Use GPIO Pin 17, which is Pin 0 for wiringPi library
 
@@ -65,7 +64,6 @@ int main(void) {
 			delay(50); // ms
 			digitalWrite(LED, LOW);	  // Off
 			delay(50);
-			std::cout <<  i <<std::endl;
 			okidac = FALSE;
 		}
 
