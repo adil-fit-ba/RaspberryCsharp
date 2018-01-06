@@ -5,9 +5,9 @@ namespace FIT_IoT.Server.Shared.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<WebApplication1.MojContext>
+    internal sealed class Configurationss : DbMigrationsConfiguration<WebApplication1.MojContext>
     {
-        public Configuration()
+        public Configurationss()
         {
             AutomaticMigrationsEnabled = true;
         }
