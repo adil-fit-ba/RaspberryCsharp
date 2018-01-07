@@ -58,7 +58,7 @@
     <Compile Include="Migrations\201801061234215_MigracijaV1.Designer.cs">
       <DependentUpon>201801061234215_MigracijaV1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configurationss.cs" />
+    <Compile Include="Migrations\Configurations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
