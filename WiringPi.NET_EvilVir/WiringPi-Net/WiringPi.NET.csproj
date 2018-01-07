@@ -71,4 +71,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="libwiringPiI2C.so" />
+    <None Include="libwiringPiSPI.so" />
+  </ItemGroup>
 </Project>
