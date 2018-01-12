@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FIT_IoT.Server.Shared.EntityModel;
+﻿using FIT_IoT.SharedAll.Enums;
 
-namespace FIT_IoT.SharedAll
+namespace FIT_IoT.SharedAll.ViewModels
 {
     public class KomandaGetVM
     {

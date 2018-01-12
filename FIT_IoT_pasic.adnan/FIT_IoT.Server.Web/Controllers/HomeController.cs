@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WebApplication1;
 
 namespace FIT_IoT.Server.Web.Controllers
 {
@@ -12,8 +11,7 @@ namespace FIT_IoT.Server.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            MojContext db = new MojContext();
-            return View(db);
+            return RedirectToAction("Index", "Stanje", new {Area = "WebArea"});
         }
     }
 }

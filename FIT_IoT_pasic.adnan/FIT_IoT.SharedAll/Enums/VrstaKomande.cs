@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
-namespace FIT_IoT.Server.Shared.EntityModel
+namespace FIT_IoT.SharedAll.Enums
 {
     public enum VrstaKomande
     {
+        [Description("Upali svjetlo")]
         SVJETLO_UPALI = 0,
+
+        [Description("Ugasi svjetlo")]
         SVJETLO_UGASI,
+
+        [Description("Otvori vrata")]
         OTVORI_VRATA,
     }
 
-    public class VrstaKomandeStrings {
-        public static string[] VrsteKomande = new string[] {
-           "Upali svjetlo",
-           "Ugasi svjetlo",
-           "Otvori vrata"
-        };
-    }
 }

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FIT_IoT.RPI.Shared
+namespace FIT_IoT.Server.Shared.EntityModel
 {
-    public class Class1
+    public enum KorisnickaUloga
     {
+        Admin, DefaultUser
     }
 }

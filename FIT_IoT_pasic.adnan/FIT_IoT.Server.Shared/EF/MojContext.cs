@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity;
 using FIT_IoT.Server.Shared.EntityModel;
 
-namespace WebApplication1
+namespace FIT_IoT.Server.Shared.EF
 {
     public class MojContext:DbContext
     {
@@ -13,6 +9,7 @@ namespace WebApplication1
         {
             
         }
-        public DbSet<Komanda> komanda { get; set; }
+        public DbSet<Komanda> Komanda { get; set; }
+        public DbSet<AuthentificationToken> AuthentificationToken { get; set; }
     }
 }

@@ -112,6 +112,10 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\ApiArea\Views\web.config" />
+    <Content Include="Areas\WebArea\Views\web.config" />
+    <Content Include="Areas\WebArea\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\WebArea\Views\Shared\_Layout.cshtml" />
     <None Include="Properties\PublishProfiles\pasica.app.fit.ba - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -122,24 +126,29 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\ApiArea\ApiAreaAreaRegistration.cs" />
+    <Compile Include="Areas\WebArea\Controllers\StanjeController.cs" />
+    <Compile Include="Areas\WebArea\Helper\BaseWebController.cs" />
+    <Compile Include="Areas\WebArea\ViewModels\KomandaIndexVM.cs" />
+    <Compile Include="Areas\WebArea\ViewModels\StanjeIndexVM.cs" />
+    <Compile Include="Areas\WebArea\WebAreaAreaRegistration.cs" />
+    <Compile Include="Areas\ApiArea\Controllers\RpiKomandaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\KomandaController.cs" />
+    <Compile Include="Areas\WebArea\Controllers\KomandaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Areas\ApiArea\Helper\BaseApiController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\WebArea\Views\Stanje\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Komanda\Index.cshtml" />
+    <Content Include="Areas\WebArea\Views\Komanda\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -149,7 +158,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Areas\ApiArea\Models\" />
+    <Folder Include="Areas\ApiArea\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FIT_IoT.Server.Shared\FIT_IoT.Server.Shared.csproj">
