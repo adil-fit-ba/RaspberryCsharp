@@ -47,6 +47,13 @@ namespace FIT_IoT.RPI.Shared.Komande
                             break;
                     }
                     KomandaApi.IzvrsenaKomanda(command.value.Id);
+                }                
+
+                double temp = GPIODevices.readTemperature();
+
+                if (temp != -1) {
+                    System.Console.Write("Temperatura je: " + temp.ToString());
+
                 }
             }
         }

@@ -127,6 +127,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\ApiArea\ApiAreaAreaRegistration.cs" />
+    <Compile Include="Areas\ApiArea\Controllers\RPITemperatureController.cs" />
     <Compile Include="Areas\WebArea\Controllers\StanjeController.cs" />
     <Compile Include="Areas\WebArea\Helper\BaseWebController.cs" />
     <Compile Include="Areas\WebArea\ViewModels\KomandaIndexVM.cs" />
@@ -159,6 +160,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\ApiArea\Models\" />
+    <Folder Include="Areas\ApiArea\Views\RPITemperature\" />
     <Folder Include="Areas\ApiArea\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>

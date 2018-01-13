@@ -10,6 +10,7 @@ namespace FIT_IoT.Server.Shared.EF
             
         }
         public DbSet<Komanda> Komanda { get; set; }
+        public DbSet<Temperatura> Temperatura { get; set; }
         public DbSet<AuthentificationToken> AuthentificationToken { get; set; }
     }
 }
