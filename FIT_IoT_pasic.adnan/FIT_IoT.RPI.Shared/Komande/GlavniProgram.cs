@@ -21,7 +21,7 @@ namespace FIT_IoT.RPI.Shared.Komande
             while (true)
             {
                 MyHelper.pauziraj(1000);
-                ApiResult<KomandaGetVM> command = KomandaApi.Get();
+                ApiResult<KomandaGetVM> command = KomandaApi.GetOne();
                 i++;
                 System.Console.Write(i + ". ");
                 if (!command.isException)
