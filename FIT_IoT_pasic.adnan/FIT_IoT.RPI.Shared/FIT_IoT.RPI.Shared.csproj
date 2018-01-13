@@ -48,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIs\KomandaApi.cs" />
+    <Compile Include="Helper\MyThread.cs" />
+    <Compile Include="Komande\GlavniProgram.cs" />
     <Compile Include="Komande\Svjetlo.cs" />
     <Compile Include="MyConfig.cs" />
     <Compile Include="Helper\MyApiRequests.cs" />

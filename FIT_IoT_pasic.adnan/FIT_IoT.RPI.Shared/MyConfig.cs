@@ -8,7 +8,7 @@ namespace FIT_IoT.RPI.Shared
 {
     public class MyConfig
     {
-       // public static readonly string ServerUrl = "http://pasica.app.fit.ba/";
-        public static readonly string ServerUrl = "http://localhost:62994/api";
+        public static readonly string ServerUrl = "http://pasica.app.fit.ba/api/";
+       // public static readonly string ServerUrl = "http://f9b52326.eu.ngrok.io";
     }
 }

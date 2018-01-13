@@ -22,43 +22,7 @@ namespace FIT_IoT.RPI.Console
         static void Main(string[] args)
         {
             //GPIO inicijalizacija
-           Svjetlo.initRaspberry();
-
-            int i = 0;
-            while(true)
-            {
-                MyHelper.pauziraj(1000);
-                ApiResult<KomandaGetVM> command = KomandaApi.Get();
-                i++;
-                System.Console.Write(i + ". ");
-                if (!command.isException)
-                {
-                    if (command.value == null)
-                    {
-                        System.Console.WriteLine("Nema komande ");
-                        continue;
-                    }
-                    System.Console.WriteLine("Preuzeta komanda " + command.value.Id + ": " + command.value.VrstaKomande.MyDescription());
-                        switch (command.value.VrstaKomande)
-                        {
-                            case VrstaKomande.SVJETLO_UPALI:
-                                Svjetlo.lightControll(true);
-                              
-                                break;
-                            case VrstaKomande.SVJETLO_UGASI:
-                                Svjetlo.lightControll(false);
-                                break;
-                            case VrstaKomande.OTVORI_VRATA:
-                                break;
-                            default:
-                                break;
-                        }
-                    KomandaApi.IzvrsenaKomanda(command.value.Id);
-                }
-               
-
-            }
-
+                GlavniProgram.Run();
         }
     }
 }
