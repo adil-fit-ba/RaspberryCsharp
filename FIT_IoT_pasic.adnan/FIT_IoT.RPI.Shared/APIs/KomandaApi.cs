@@ -15,7 +15,7 @@ namespace FIT_IoT.RPI.Shared.APIs
        
         public static readonly string ControllerName = "RpiKomanda";
 
-        public static ApiResult<KomandaGetVM> Get()
+        public static ApiResult<KomandaGetVM> GetOne()
         {
             return MyApiRequests.Get<KomandaGetVM>(ControllerName, "GetOne");
             
