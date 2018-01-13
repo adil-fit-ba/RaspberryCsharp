@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FIT_IoT.RPI.Console.Helper;
+using FIT_IoT.RPI.Console_.Helper;
 using FIT_IoT.RPI.Shared.APIs;
 using FIT_IoT.SharedAll.Enums;
 using FIT_IoT.SharedAll.ViewModels;
@@ -15,7 +15,7 @@ namespace FIT_IoT.RPI.Shared.Komande
         public static void Run()
         {
             //GPIO inicijalizacija
-            Svjetlo.initRaspberry();
+            GPIODevices.initRaspberry();
 
             int i = 0;
             while (true)
@@ -35,11 +35,11 @@ namespace FIT_IoT.RPI.Shared.Komande
                     switch (command.value.VrstaKomande)
                     {
                         case VrstaKomande.SVJETLO_UPALI:
-                            Svjetlo.lightControll(true);
+                            GPIODevices.lightControll(true);
 
                             break;
                         case VrstaKomande.SVJETLO_UGASI:
-                            Svjetlo.lightControll(false);
+                            GPIODevices.lightControll(false);
                             break;
                         case VrstaKomande.OTVORI_VRATA:
                             break;
@@ -48,8 +48,6 @@ namespace FIT_IoT.RPI.Shared.Komande
                     }
                     KomandaApi.IzvrsenaKomanda(command.value.Id);
                 }
-
-
             }
         }
     }

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace FIT_IoT.RPI.Console.Helper
+namespace FIT_IoT.RPI.Console_.Helper
 {
     public class MyHelper
     {

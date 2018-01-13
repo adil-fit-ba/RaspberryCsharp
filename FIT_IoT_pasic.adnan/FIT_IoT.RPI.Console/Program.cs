@@ -6,7 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-using FIT_IoT.RPI.Console.Helper;
+using FIT_IoT.RPI.Console_.Helper;
 using FIT_IoT.RPI.Shared.APIs;
 using FIT_IoT.RPI.Shared.Komande;
 using FIT_IoT.SharedAll;
@@ -15,14 +15,14 @@ using FIT_IoT.SharedAll.ViewModels;
 using Newtonsoft.Json;
 using RaspberryPiDotNet;
 
-namespace FIT_IoT.RPI.Console
+namespace FIT_IoT.RPI.Console_
 {
     class Program
     {
         static void Main(string[] args)
         {
             //GPIO inicijalizacija
-                GlavniProgram.Run();
+            GlavniProgram.Run();
         }
     }
 }
