@@ -22,8 +22,8 @@ namespace FIT_IoT.XamarinAndroid
 
             ListView listView = FindViewById<ListView>(Resource.Id.listView1);
 
-            ApiResult<KomandaNewVM> podaci = MyApiRequests.Get<KomandaNewVM>(MyConfig.ServerUrl + "AndroidKomanda", "GetAll");
-            listView.Adapter = new ArrayAdapter(this, Resource.Id.listView1, podaci.value.Rows.Select(a=>a.KomandaText).ToList());
+            ApiResult<KomandaNewVM> podaci = MyApiRequests.Get<KomandaNewVM>("AndroidKomanda", "GetAll");
+            listView.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, podaci.value.Rows.Select(a=>a.KomandaText).ToList());
 
             listView.ItemClick += delegate(object sender, AdapterView.ItemClickEventArgs args){
 

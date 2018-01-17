@@ -172,10 +172,6 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FIT_IoT.RPI.Web\FIT_IoT.RPI.Web.csproj">
-      <Project>{50F6D8B9-5DB8-4B81-A685-012191A366D3}</Project>
-      <Name>FIT_IoT.RPI.Web</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FIT_IoT.SharedAll\FIT_IoT.SharedAll.csproj">
       <Project>{b22017cb-079e-454d-88cf-4a6bc5180049}</Project>
       <Name>FIT_IoT.SharedAll</Name>
