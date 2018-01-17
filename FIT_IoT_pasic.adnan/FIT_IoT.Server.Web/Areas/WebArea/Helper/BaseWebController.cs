@@ -2,8 +2,8 @@
 using System.Collections.Specialized;
 using System.Linq;
 using System.Web.Mvc;
-using FIT_IoT.Server.Shared.EF;
-using FIT_IoT.Server.Shared.EntityModel;
+using FIT_IoT.Server.Web.EF;
+using FIT_IoT.Server.Web.EF.EntityModel;
 
 namespace FIT_IoT.Server.Web.Areas.WebArea.Helper
 {

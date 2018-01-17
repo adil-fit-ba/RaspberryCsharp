@@ -4,8 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using FIT_IoT.RPI.Shared.Helper;
 using FIT_IoT.SharedAll;
+using FIT_IoT.SharedAll.Helper;
 using FIT_IoT.SharedAll.ViewModels;
 
 namespace FIT_IoT.RPI.Shared.APIs

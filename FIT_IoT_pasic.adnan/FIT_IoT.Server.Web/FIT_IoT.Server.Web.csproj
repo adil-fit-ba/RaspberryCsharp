@@ -112,7 +112,6 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Areas\ApiArea\Views\web.config" />
     <Content Include="Areas\WebArea\Views\web.config" />
     <Content Include="Areas\WebArea\Views\_ViewStart.cshtml" />
     <Content Include="Areas\WebArea\Views\Shared\_Layout.cshtml" />
@@ -127,7 +126,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\ApiArea\ApiAreaAreaRegistration.cs" />
-    <Compile Include="Areas\ApiArea\Controllers\RPITemperatureController.cs" />
+    <Compile Include="Areas\ApiArea\Controllers\AndroidKomandaController.cs" />
+    <Compile Include="Areas\ApiArea\Controllers\RpiTemperatureController.cs" />
     <Compile Include="Areas\WebArea\Controllers\StanjeController.cs" />
     <Compile Include="Areas\WebArea\Helper\BaseWebController.cs" />
     <Compile Include="Areas\WebArea\ViewModels\KomandaIndexVM.cs" />
@@ -136,10 +136,21 @@
     <Compile Include="Areas\ApiArea\Controllers\RpiKomandaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\WebArea\Controllers\KomandaController.cs" />
+    <Compile Include="EF\MojContext.cs" />
+    <Compile Include="EF\EntityModel\AuthentificationToken.cs" />
+    <Compile Include="EF\EntityModel\Komanda.cs" />
+    <Compile Include="EF\EntityModel\KorisnickaUloga.cs" />
+    <Compile Include="EF\EntityModel\Korisnik.cs" />
+    <Compile Include="EF\EntityModel\Temperatura.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Areas\ApiArea\Helper\BaseApiController.cs" />
+    <Compile Include="Migrations\201801131310573_migracija_v2.cs" />
+    <Compile Include="Migrations\201801131310573_migracija_v2.Designer.cs">
+      <DependentUpon>201801131310573_migracija_v2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -159,19 +170,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\ApiArea\Models\" />
-    <Folder Include="Areas\ApiArea\Views\RPITemperature\" />
-    <Folder Include="Areas\ApiArea\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FIT_IoT.Server.Shared\FIT_IoT.Server.Shared.csproj">
-      <Project>{b79f87de-9340-437a-8353-c845c099ff16}</Project>
-      <Name>FIT_IoT.Server.Shared</Name>
+    <ProjectReference Include="..\FIT_IoT.RPI.Web\FIT_IoT.RPI.Web.csproj">
+      <Project>{50F6D8B9-5DB8-4B81-A685-012191A366D3}</Project>
+      <Name>FIT_IoT.RPI.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\FIT_IoT.SharedAll\FIT_IoT.SharedAll.csproj">
       <Project>{b22017cb-079e-454d-88cf-4a6bc5180049}</Project>
       <Name>FIT_IoT.SharedAll</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201801131310573_migracija_v2.resx">
+      <DependentUpon>201801131310573_migracija_v2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

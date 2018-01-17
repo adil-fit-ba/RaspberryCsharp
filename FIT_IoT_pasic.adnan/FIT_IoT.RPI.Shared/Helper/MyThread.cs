@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading;
 
-namespace FIT_IoT.RPI.Console_.Helper
+namespace FIT_IoT.RPI.Shared.Helper
 {
     public class MyHelper
     {

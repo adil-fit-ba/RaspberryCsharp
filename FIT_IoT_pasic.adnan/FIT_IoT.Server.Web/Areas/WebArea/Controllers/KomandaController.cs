@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using FIT_IoT.Server.Shared.EF;
-using FIT_IoT.Server.Shared.EntityModel;
 using FIT_IoT.Server.Web.Areas.WebArea.Helper;
 using FIT_IoT.Server.Web.Areas.WebArea.ViewModels;
+using FIT_IoT.Server.Web.EF.EntityModel;
 using FIT_IoT.SharedAll.Enums;
+using FIT_IoT.SharedAll.Helper;
+using FIT_IoT.SharedAll.ViewModels;
 
 namespace FIT_IoT.Server.Web.Areas.WebArea.Controllers
 {
@@ -18,7 +19,7 @@ namespace FIT_IoT.Server.Web.Areas.WebArea.Controllers
             {
                 Rows = Enum.GetValues(typeof(VrstaKomande))
                     .Cast<VrstaKomande>()
-                    .Select(n => new KomandaIndexVM.Row() {KomandaValue = n, KomandaText = n.MyDescription()})
+                    .Select(n => new KomandaIndexVM.Row() {KomandaValue = n, KomandaText = n.MyDescription()}).ToList()
             };
             return View(model);
         }

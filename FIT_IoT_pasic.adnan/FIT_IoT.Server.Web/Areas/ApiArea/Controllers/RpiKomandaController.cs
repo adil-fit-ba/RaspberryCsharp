@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Http;
-using FIT_IoT.Server.Shared.EF;
-using FIT_IoT.Server.Shared.EntityModel;
 using FIT_IoT.Server.Web.Areas.ApiArea.Helper;
+using FIT_IoT.Server.Web.EF.EntityModel;
+using FIT_IoT.SharedAll.Helper;
 using FIT_IoT.SharedAll.ViewModels;
 
 namespace FIT_IoT.Server.Web.Areas.ApiArea.Controllers

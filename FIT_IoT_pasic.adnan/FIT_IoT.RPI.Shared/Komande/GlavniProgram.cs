@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FIT_IoT.RPI.Console_.Helper;
 using FIT_IoT.RPI.Shared.APIs;
+using FIT_IoT.RPI.Shared.Helper;
 using FIT_IoT.SharedAll.Enums;
+using FIT_IoT.SharedAll.Helper;
 using FIT_IoT.SharedAll.ViewModels;
 
 namespace FIT_IoT.RPI.Shared.Komande

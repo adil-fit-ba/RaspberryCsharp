@@ -1,15 +1,16 @@
-﻿using FIT_IoT.Server.Shared.EntityModel;
-using FIT_IoT.Server.Web.Areas.ApiArea.Helper;
+﻿using FIT_IoT.Server.Web.Areas.ApiArea.Helper;
 using FIT_IoT.SharedAll.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using FIT_IoT.Server.Web.EF.EntityModel;
+using FIT_IoT.SharedAll.Helper;
 
 namespace FIT_IoT.Server.Web.Areas.ApiArea.Controllers
 {
-    public class RPITemperatureController : BaseApiController
+    public class RpiTemperatureController : BaseApiController
     {
         // GET: ApiArea/RPITemperature
         public ApiResult<KomandaGetVM> Get()
@@ -23,16 +24,9 @@ namespace FIT_IoT.Server.Web.Areas.ApiArea.Controllers
                     Vrijednost = trenutnaVrijednost,
                     DatumIzvrsenja = DateTime.Now
                 };
-            try
-            {
 
-                _db.Temperatura.Add(obj);
-                _db.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-
-            }
+            _db.Temperatura.Add(obj);
+            _db.SaveChanges();
 
             return ApiResult<KomandaGetVM>.OK(null);
         }

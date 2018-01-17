@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FIT_IoT.SharedAll.ViewModels
+namespace FIT_IoT.SharedAll.Helper
 {
     public class ApiResult<T>
     {

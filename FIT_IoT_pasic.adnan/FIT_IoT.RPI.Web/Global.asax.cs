@@ -22,6 +22,12 @@ namespace FIT_IoT.RPI.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             System.Console.WriteLine("Web aplikacija thread starting");
          
+           Thread t = new Thread(
+               () =>{
+                   GlavniProgram.Run();
+               }
+               );
+            t.Start();
             System.Console.WriteLine("Web aplikacija thread started");
         }
     }
