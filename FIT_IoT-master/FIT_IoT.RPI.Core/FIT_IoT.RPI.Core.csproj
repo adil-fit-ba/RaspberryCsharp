@@ -41,8 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\Enums\VrstaKomande.cs" />
-    <Compile Include="ViewModels\KomandaGetVM.cs" />
+    <Compile Include="ViewModels\MeasurementVM.cs" />
+    <Compile Include="ViewModels\CommandVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FIT_IoT.Core\FIT_IoT.Core.csproj">

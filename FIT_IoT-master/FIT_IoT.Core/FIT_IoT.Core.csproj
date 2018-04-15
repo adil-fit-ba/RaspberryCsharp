@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\CommandType.cs" />
+    <Compile Include="Enums\SensorType.cs" />
     <Compile Include="Helper\ApiResult.cs" />
     <Compile Include="Helper\HelperEnumDescr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

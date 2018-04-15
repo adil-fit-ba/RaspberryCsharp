@@ -22,18 +22,37 @@ namespace FIT_IoT.Client.Helper
                 _value = value;
             }
         }
-        public static ApiResult<T> Get<T>(string controllerName, string get, params P[] ps)
+        public static ApiResult<T> Get<T>(string controllerName, string action, params P[] ps)
+        {
+            return Get<T>(controllerName + "/" + action, ps);
+        }
+
+        public static ApiResult<T> Get<T>(string route, params P[] ps)
         {
             WebClient wc = new WebClient();
-            string address = MyConfig.ServerUrl + "/" + controllerName + "/" + get + "?";
+            string address = MyConfig.ServerUrl + "/" + route + "?";
 
             foreach (P p in ps)
             {
                 address += p._name + "=" + p._value + "&";
             }
-            string json = wc.DownloadString(address);
-            ApiResult<T> result = JsonConvert.DeserializeObject<ApiResult<T>>(json);
-            return result;
+            try
+            {
+                string json = wc.DownloadString(address);
+                ApiResult<T> result = JsonConvert.DeserializeObject<ApiResult<T>>(json);
+                return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Api.Get " + address + " -> " + e);
+                return new ApiResult<T>
+                {
+                    isException = true,
+                    exceptionCode = -10,
+                    exceptionMessage = "exception: " + address+ " -> " + e.Message
+                };
+            }
+          
         }
     }
 }

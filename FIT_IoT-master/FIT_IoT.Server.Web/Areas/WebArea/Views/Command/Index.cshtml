@@ -1,0 +1,32 @@
+﻿@model FIT_IoT.SharedAll.ViewModels.CommandIndexVM
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Dodavanje komandi</h2>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Komanda</th>
+        <th>Akcija</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    @foreach (var x in Model.Rows)
+    {
+        <tr>
+
+            <td>@x.CommandText</td>
+            <td>
+                <form method="post" action="@Url.Action("Add")">
+                    <input type="hidden" name="commandType" value="@x.CommandValue"/>
+                    <input type="submit" value="Izvrši" class="btn btn-danger"/>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+

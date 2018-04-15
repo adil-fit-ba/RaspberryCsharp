@@ -1,0 +1,21 @@
+﻿<div id="ajaxDiv"></div>
+
+<script>
+
+    // set interval
+    
+    function mycode() {
+        $.get("@Url.Action("IndexAjax")",
+            function(r, e) {
+                $("#ajaxDiv").html(r);
+            });
+    }
+
+    var tid = setInterval(mycode, 2000);
+
+    function abortTimer() { // to be called when you want to stop the timer
+        clearInterval(tid);
+    }
+
+    mycode();
+</script>

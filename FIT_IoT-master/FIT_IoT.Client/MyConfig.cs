@@ -8,6 +8,7 @@ namespace FIT_IoT.Client
 {
     public class MyConfig
     {
-        public static string ServerUrl = "https://d4b36248.eu.ngrok.io/api";
+        //public static string ServerUrl = "http://a4b00f62.eu.ngrok.io/";
+        public static string ServerUrl = "http://a1.iot.app.fit.ba/";
     }
 }

@@ -5,12 +5,12 @@ namespace FIT_IoT.Server.Web.EF
 {
     public class MojContext:DbContext
     {
-        public MojContext():base("Server=app.fit.ba,1432;Database=pasica_raspberry;Trusted_Connection=false;MultipleActiveResultSets=true;User ID=pasica_raspberry;Password=Testiranje123")
+        public MojContext():base("name=CS")
         {
             
         }
-        public DbSet<Komanda> Komanda { get; set; }
-        public DbSet<Temperatura> Temperatura { get; set; }
+        public DbSet<Command> Command { get; set; }
+        public DbSet<SensorMeasurement> SensorMeasurement { get; set; }
         public DbSet<AuthentificationToken> AuthentificationToken { get; set; }
     }
 }

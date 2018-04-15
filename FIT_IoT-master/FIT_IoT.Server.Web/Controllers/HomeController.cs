@@ -11,7 +11,7 @@ namespace FIT_IoT.Server.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return RedirectToAction("Index", "Stanje", new {Area = "WebArea"});
+            return RedirectToAction("Index", "State", new {Area = "WebArea"});
         }
     }
 }

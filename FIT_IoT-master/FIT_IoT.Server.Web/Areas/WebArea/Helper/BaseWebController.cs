@@ -21,16 +21,16 @@ namespace FIT_IoT.Server.Web.Areas.WebArea.Helper
             return authToken;
         }
 
-        protected Korisnik GetKorisnikOfAuthToken()
+        protected User GetKorisnikOfAuthToken()
         {
             return GetKorisnikOfAuthToken(_db);
         }
 
-        public static Korisnik GetKorisnikOfAuthToken(MojContext _db)
+        public static User GetKorisnikOfAuthToken(MojContext _db)
         {
             string t = GetAuthToken();
             AuthentificationToken aAutentifikacijaToken = _db.AuthentificationToken.SingleOrDefault(x => x.authToken == t && !x.IsDeleted);
-            return aAutentifikacijaToken?.Korisnik;
+            return aAutentifikacijaToken?.User;
         }
 
 

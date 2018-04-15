@@ -54,9 +54,11 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -84,6 +86,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -115,6 +120,9 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\WebArea\Views\Measurement\Index.cshtml" />
+    <Content Include="Areas\WebArea\Views\Measurement\_Index.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -123,35 +131,44 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\ApiArea\ApiAreaAreaRegistration.cs" />
-    <Compile Include="Areas\ApiArea\Controllers\AndroidKomandaController.cs" />
-    <Compile Include="Areas\ApiArea\Controllers\RpiKomandaController.cs" />
-    <Compile Include="Areas\ApiArea\Controllers\RpiTemperatureController.cs" />
+    <Compile Include="Areas\ApiArea\Controllers\AndroidCommandController.cs" />
+    <Compile Include="Areas\ApiArea\Controllers\AndroidMeasurementController.cs" />
+    <Compile Include="Areas\ApiArea\Controllers\PiCommandController.cs" />
+    <Compile Include="Areas\ApiArea\Controllers\PiMeasurementController.cs" />
     <Compile Include="Areas\ApiArea\Helper\BaseApiController.cs" />
-    <Compile Include="Areas\WebArea\Controllers\KomandaController.cs" />
-    <Compile Include="Areas\WebArea\Controllers\StanjeController.cs" />
+    <Compile Include="Areas\WebArea\Controllers\MeasurementController.cs" />
+    <Compile Include="Areas\WebArea\Controllers\CommandController.cs" />
+    <Compile Include="Areas\WebArea\Controllers\StateController.cs" />
     <Compile Include="Areas\WebArea\Helper\BaseWebController.cs" />
-    <Compile Include="Areas\WebArea\ViewModels\KomandaIndexVM.cs" />
-    <Compile Include="Areas\WebArea\ViewModels\StanjeIndexVM.cs" />
+    <Compile Include="Areas\WebArea\ViewModels\MeasurementIndexVM.cs" />
+    <Compile Include="Areas\WebArea\ViewModels\CommandIndexVM.cs" />
+    <Compile Include="Areas\WebArea\ViewModels\StateIndexVM.cs" />
     <Compile Include="Areas\WebArea\WebAreaAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="EF\EntityModel\AuthentificationToken.cs" />
-    <Compile Include="EF\EntityModel\Komanda.cs" />
-    <Compile Include="EF\EntityModel\KorisnickaUloga.cs" />
-    <Compile Include="EF\EntityModel\Korisnik.cs" />
-    <Compile Include="EF\EntityModel\Temperatura.cs" />
+    <Compile Include="EF\EntityModel\Command.cs" />
+    <Compile Include="EF\EntityModel\UserType.cs" />
+    <Compile Include="EF\EntityModel\User.cs" />
+    <Compile Include="EF\EntityModel\SensorMeasurement.cs" />
     <Compile Include="EF\MojContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804132226295_senzori1.cs" />
+    <Compile Include="Migrations\201804132226295_senzori1.Designer.cs">
+      <DependentUpon>201804132226295_senzori1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <Content Include="Areas\WebArea\Views\Komanda\Index.cshtml" />
+    <Content Include="Areas\WebArea\Views\Command\Index.cshtml" />
     <Content Include="Areas\WebArea\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\WebArea\Views\Stanje\Index.cshtml" />
+    <Content Include="Areas\WebArea\Views\State\Index.cshtml" />
     <Content Include="Areas\WebArea\Views\web.config" />
     <Content Include="Areas\WebArea\Views\_ViewStart.cshtml" />
     <None Include="packages.config" />
@@ -180,6 +197,11 @@
       <Project>{12af0236-6595-4e0a-82d9-f77e10bf230c}</Project>
       <Name>FIT_IoT.RPI.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201804132226295_senzori1.resx">
+      <DependentUpon>201804132226295_senzori1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

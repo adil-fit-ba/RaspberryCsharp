@@ -1,0 +1,50 @@
+﻿@model FIT_IoT.SharedAll.ViewModels.MeasurementIndexVM
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Izmjerene vrijednosti pomoću senzora</h2>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Vrijeme</th>
+        <th>Tip senzora</th>
+        <th>SensorID</th>
+        <th>Vrijendost</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    @if(Model.Rows != null)
+    {
+        <tr>
+
+            <td>@if (Model.Rows.Date != null)
+                {
+                    @Model.Rows.Date.Value.ToString("dd.MM.yyyy HH:mm:ss")
+                }</td>
+            <td>@Model.Rows.SensorType</td>
+            <td>@Model.Rows.SensorId</td>
+            <td>@Model.Rows.Value</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+
+
+    @if (Model.LastFlow != null )
+    {
+        double minutes = Model.LastFlow.Value.TotalMinutes;
+        if (minutes > 1)
+        {
+            <label class="btn btn-danger">Zadnji protok vode prije @minutes.ToString("#.0") minuta</label>
+        }
+        else
+        {
+            <label class="btn btn-info">Zadnji protok vode prije @minutes.ToString("#.0") minuta</label>
+        }
+    }
+    
+

@@ -1,0 +1,65 @@
+﻿@using FIT_IoT.Core.Helper
+@using FIT_IoT.Server.Web.EF.EntityModel
+@model FIT_IoT.Server.Web.Areas.WebArea.ViewModels.StateIndexVM
+
+@{
+    ViewBag.Title = "title";
+}
+
+<h2>Pregled komandi</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Datum evidentiranja</th>
+            <th>Vrsta komande</th>
+            <th>Jel izvrsena?</th>
+            <th>Preuzeta komanda
+                <br/>
+                <label>Proteklo vrijeme: </label>
+            </th>
+            <th>Izvršena komanda
+                <br/>
+                <label>Proteklo vrijeme: </label>
+            </th>
+            <th>Greška</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (Command x in Model.Rows)
+    {
+        <tr>
+            <td>@x.Id</td>
+            <td>
+                @x.DateAdded.ToString("yyyy-MM-dd") <strong>  @x.DateAdded.ToString("HH:mm:ss")</strong>
+                    </td>
+            <td>@x.CommandType.MyDescription()</td>
+            <td>@x.IsExecuteEnded</td>
+            <td>
+                @if (x.DateExecuteStart.HasValue)
+                {
+                    @x.DateExecuteStart.Value.ToString("yyyy-MM-dd")  <strong> @x.DateExecuteStart.Value.ToString("HH:mm:ss")</strong><br/>
+                    @((x.DateExecuteStart.Value - x.DateExecuteStart))
+                }
+            </td>
+            <td>
+                @if (x.DateExecuteEnd.HasValue)
+                {
+                    @x.DateExecuteEnd.Value.ToString("yyyy-MM-dd")  <strong> @x.DateExecuteEnd.Value.ToString("HH:mm:ss")</strong><br/>
+                    @((x.DateExecuteEnd.Value - x.DateAdded))
+                }
+            </td>
+            <td>
+                @x.ErrorDescription
+            </td>
+            <td>
+                @if (!x.IsExecuteStarted)
+                {
+                    <a href="@Url.Action("Delete", new {KomandaId = @x.Id})" class="btn btn-warning">Obriši</a>   
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

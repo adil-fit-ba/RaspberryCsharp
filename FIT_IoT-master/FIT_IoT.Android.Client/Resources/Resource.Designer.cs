@@ -44,6 +44,12 @@ namespace FIT_IoT.Android.Client
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f040001
+			public const int button1 = 2130968577;
+			
+			// aapt resource value: 0x7f040002
+			public const int editText1 = 2130968578;
+			
 			// aapt resource value: 0x7f040000
 			public const int listView1 = 2130968576;
 			
@@ -61,7 +67,10 @@ namespace FIT_IoT.Android.Client
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Main = 2130837504;
+			public const int Commands = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int Measurements = 2130837505;
 			
 			static Layout()
 			{
