@@ -75,7 +75,7 @@ namespace FIT_IoT.Android.Client
                     if (DateTime.Now > x.Time.Value.AddMinutes(1))
                     {
 
-                        MyWarningAlarm("Nema protoka već " + (DateTime.Now - x.Time).Value.TotalMinutes.ToString("##.00") + " min");
+                        MyWarningAlarm("Senzor ne šalje podatke već " + (DateTime.Now - x.Time).Value.TotalMinutes.ToString("##0.00") + " min");
                     }
                     if (x.Value < DonjaGranicaZaUpozorenje)
                     {
@@ -92,7 +92,7 @@ namespace FIT_IoT.Android.Client
             }
             else
             {
-                PrikaziNotifikaciju("Nema komunikacije sa senzorom već " + (DateTime.Now - LastMeasurement).TotalMinutes.ToString("##.00") + " min");
+                PrikaziNotifikaciju("Nema komunikacije sa serverom već " + (DateTime.Now - LastMeasurement).TotalMinutes.ToString("##0.00") + " min");
             }
         }
 
