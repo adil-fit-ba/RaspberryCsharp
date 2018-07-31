@@ -54,7 +54,7 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="A.cs" />
+    <Compile Include="MeasurementLogic.cs" />
     <Compile Include="MeasurementsActivity.cs" />
     <Compile Include="CommandsActivity.cs" />
     <Compile Include="MyService.cs" />

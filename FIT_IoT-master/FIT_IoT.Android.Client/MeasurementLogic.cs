@@ -17,26 +17,34 @@ using FIT_IoT.Core.Helper;
 
 namespace FIT_IoT.Android.Client
 {
-    public class A
+    public class MeasurementLogic
     {
         public Context Context { get; }
+        public int DonjaGranicaZaUpozorenje { get; }
+        public int RefreshTime { get; }
 
-        public A(Context context)
+        public MeasurementLogic(Context context, int DonjaGranicaZaUpozorenje, int RefreshTime)
         {
             Context = context;
+            this.DonjaGranicaZaUpozorenje = DonjaGranicaZaUpozorenje;
+            this.RefreshTime = RefreshTime;
         }
 
+        private bool IsFinished = false;
+        private Task task;
         public void Start()
         {
-            new Task(() =>
+            IsFinished = false;
+            task = new Task(() =>
             {
-                while (true)
+                while (!IsFinished)
                 {
                     doIt();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(RefreshTime*1000);
                 }
 
-            }).Start();
+            });
+            task.Start();
         }
 
 
@@ -67,12 +75,13 @@ namespace FIT_IoT.Android.Client
                     if (DateTime.Now > x.Time.Value.AddMinutes(1))
                     {
 
-                        MyAlarm("Nema protoka već " + (DateTime.Now - x.Time).Value.TotalMinutes + " min");
+                        MyWarningAlarm("Nema protoka već " + (DateTime.Now - x.Time).Value.TotalMinutes.ToString("##.00") + " min");
                     }
-                    if (x.Value < 500)
+                    if (x.Value < DonjaGranicaZaUpozorenje)
                     {
-                        MyAlarm("Brzina protoka je " + x.Value);
+                        MyWarningAlarm("Brzina protoka je " + x.Value);
                     }
+                    LastMeasurement = DateTime.Now;
                 }
                 else
                 {
@@ -83,14 +92,20 @@ namespace FIT_IoT.Android.Client
             }
             else
             {
-                MyAlarm(podaci.exceptionMessage);
+                PrikaziNotifikaciju("Nema komunikacije sa senzorom već " + (DateTime.Now - LastMeasurement).TotalMinutes.ToString("##.00") + " min");
             }
         }
 
+   
+
+        private DateTime LastMeasurement;
         private DateTime LastAlarm;
-        private void MyAlarm(string text)
+        private void MyWarningAlarm(string text)
         {
             if (LastAlarm.AddMinutes(3) > DateTime.Now)
+                return;
+
+            if (IsFinished)
                 return;
 
             LastAlarm = DateTime.Now;
@@ -102,13 +117,10 @@ namespace FIT_IoT.Android.Client
                 .SetContentIntent(BuildIntentToShowMainActivity())
                 .SetAutoCancel(true)
                 .SetOngoing(true)
-                //    .AddAction(AkcijaPauseStop())
                 .SetSound(RingtoneManager.GetDefaultUri(RingtoneType.Ringtone));
 
             ;
 
-            //   Vibrator v = (Vibrator)GetSystemService(Context.VibratorService); // Make phone vibrate
-            //     v.Vibrate(5000);
 
             NotificationManager notificationManager =
                 (NotificationManager)Context.GetSystemService(Context.NotificationService);
@@ -123,20 +135,33 @@ namespace FIT_IoT.Android.Client
 
         private void PrikaziNotifikaciju(string text)
         {
+            if (IsFinished)
+                return;
             var builder = new Notification.Builder(Context)
-                    .SetContentTitle("protok vode")
+                    .SetContentTitle("protok vode @ " + DonjaGranicaZaUpozorenje)
                     .SetContentText(text)
                     .SetSmallIcon(Resource.Drawable.ic_stat_button_click)
                     .SetContentIntent(BuildIntentToShowMainActivity())
                     .SetOngoing(true)
-                //   .AddAction(BuildRestartTimerAction())
-                //   .AddAction(BuildStopServiceAction())
                 ;
 
             NotificationManager notificationManager =
                 (NotificationManager)Context.GetSystemService(Context.NotificationService);
             notificationManager.Notify(1000, builder.Build());
 
+        }
+
+        public void End()
+        {
+            if (task != null)
+            {
+                IsFinished = true;
+                task = null;
+                NotificationManager notificationManager =
+                    (NotificationManager)Context.GetSystemService(Context.NotificationService);
+                notificationManager.Cancel(1000);
+                notificationManager.Cancel(1001);
+            }
         }
     }
 }

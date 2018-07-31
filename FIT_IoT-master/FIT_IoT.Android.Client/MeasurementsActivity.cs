@@ -22,8 +22,6 @@ namespace FIT_IoT.Android.Client
     {
        
 
-        private EditText editText;
-        private Button button;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -31,22 +29,38 @@ namespace FIT_IoT.Android.Client
 
             SetContentView(Resource.Layout.Measurements);
 
-            editText = FindViewById<EditText>(Resource.Id.editText1);
-            button = FindViewById<Button>(Resource.Id.button1);
+            var txtMinProtok = FindViewById<EditText>(Resource.Id.txtMinProtok);
+            var txtVrijeme = FindViewById<EditText>(Resource.Id.txtVrijeme);
+            var btnStart = FindViewById<Button>(Resource.Id.btnStart);
+            var btnEnd = FindViewById<Button>(Resource.Id.btnEnd);
 
 
             toaster("started");
 
-            //A a = new A(this);
-            //a.Start();
-
-            button.Click += delegate
+         
+            btnStart.Click += delegate
             {
-              //  a.doIt();
+                try
+                {
+                    Intent intent = new Intent(this, typeof(MyService));
+                    int minProtok = int.Parse(txtMinProtok.Text);
+                    int vrijeme = int.Parse(txtVrijeme.Text);
+                    intent.PutExtra("vrijeme", vrijeme);
+                    intent.PutExtra("minProtok", minProtok);
+                    StartService(intent);
+                }
+                catch (Exception e)
+                {
+                    toaster(e.Message);
+                }
+               
             };
 
-                   var intent = new Intent(this, typeof(MyService));
-                   this.StartService(intent);
+
+            btnEnd.Click += delegate {
+                StopService(new Intent(this, typeof(MyService)));
+            };
+            
         }
 
         private void toaster(string s)

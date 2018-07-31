@@ -18,17 +18,26 @@ namespace FIT_IoT.Android.Client
 
         public override IBinder OnBind(Intent intent)
         {
-           return new Binder();
+           return null;
         }
 
+        private MeasurementLogic _measurementLogic;
         public override StartCommandResult OnStartCommand(Intent intent, StartCommandFlags flags, int startId)
         {
-            A a = new A(this);
-            a.Start();
+            int mivrijemenP =intent.GetIntExtra("vrijeme", 2);
+            int minProtok= intent.GetIntExtra("minProtok",500);
+            _measurementLogic = new MeasurementLogic(this, minProtok, mivrijemenP);
+            _measurementLogic.Start();
 
             return StartCommandResult.Sticky;
         }
 
-       
+        public override void OnDestroy()
+        {
+            if (_measurementLogic != null)
+            {
+                _measurementLogic.End();
+            }
+        }
     }
 }
