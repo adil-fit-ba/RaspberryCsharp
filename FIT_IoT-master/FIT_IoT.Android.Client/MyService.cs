@@ -29,6 +29,16 @@ namespace FIT_IoT.Android.Client
             _measurementLogic = new MeasurementLogic(this, minProtok, mivrijemenP);
             _measurementLogic.Start();
 
+            var builder = new Notification.Builder(this)
+                    .SetContentTitle("protok vode")
+                    .SetContentText("...")
+                    .SetSmallIcon(Resource.Drawable.ic_stat_button_click)
+                    .SetOngoing(true)
+                ;
+
+            // Enlist this instance of the service as a foreground service
+            StartForeground(1000, builder.Build());
+
             return StartCommandResult.Sticky;
         }
 

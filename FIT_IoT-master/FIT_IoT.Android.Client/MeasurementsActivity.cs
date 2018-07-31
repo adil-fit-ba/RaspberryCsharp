@@ -17,6 +17,7 @@ using FIT_IoT.Core.Helper;
 
 namespace FIT_IoT.Android.Client
 {
+    //FIT_IoT.Android.Client
     [Activity(Label = "MeasurementsActivity", MainLauncher = true)]
     public class MeasurementsActivity : Activity
     {
@@ -35,7 +36,7 @@ namespace FIT_IoT.Android.Client
             var btnEnd = FindViewById<Button>(Resource.Id.btnEnd);
 
 
-            toaster("started");
+          
 
          
             btnStart.Click += delegate
@@ -48,6 +49,7 @@ namespace FIT_IoT.Android.Client
                     intent.PutExtra("vrijeme", vrijeme);
                     intent.PutExtra("minProtok", minProtok);
                     StartService(intent);
+                    toaster("started");
                 }
                 catch (Exception e)
                 {
@@ -59,6 +61,7 @@ namespace FIT_IoT.Android.Client
 
             btnEnd.Click += delegate {
                 StopService(new Intent(this, typeof(MyService)));
+                toaster("stopped");
             };
             
         }

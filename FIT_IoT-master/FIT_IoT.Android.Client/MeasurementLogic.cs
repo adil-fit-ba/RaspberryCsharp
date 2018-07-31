@@ -50,9 +50,10 @@ namespace FIT_IoT.Android.Client
 
         public PendingIntent BuildIntentToShowMainActivity()
         {
-            var uri = global::Android.Net.Uri.Parse("http://a1.iot.app.fit.ba/WebArea/Measurement");
-            Intent intent = new Intent(Intent.ActionView);
-            intent.SetData(uri);
+          //  var uri = global::Android.Net.Uri.Parse("http://a1.iot.app.fit.ba/WebArea/Measurement");
+            Intent intent = new Intent(Context, typeof(MeasurementsActivity));
+           // intent.SetData(uri);
+
 
             PendingIntent pendingIntent =
                 PendingIntent.GetActivity(Context.ApplicationContext, 0, intent, PendingIntentFlags.UpdateCurrent);
@@ -127,9 +128,9 @@ namespace FIT_IoT.Android.Client
             Notification notification = builder.Build();
 
             // Turn on vibrate:
-            notification.Defaults |= NotificationDefaults.Vibrate;
+            notification.Defaults = NotificationDefaults.All;
 
-            notificationManager.Notify(1001, notification);
+            notificationManager.Notify(1000, notification);
         }
 
 
@@ -160,7 +161,6 @@ namespace FIT_IoT.Android.Client
                 NotificationManager notificationManager =
                     (NotificationManager)Context.GetSystemService(Context.NotificationService);
                 notificationManager.Cancel(1000);
-                notificationManager.Cancel(1001);
             }
         }
     }
