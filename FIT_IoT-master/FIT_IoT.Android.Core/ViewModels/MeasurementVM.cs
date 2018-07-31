@@ -8,7 +8,7 @@ namespace FIT_IoT.Android.Core.ViewModels
     {
         public const string Action_GetLast = "AndroidMeasurement-GetAll";
 
-        public IList<Row> Rows { get; set; }
+        public List<Row> Rows { get; set; }
 
 
         public class Row

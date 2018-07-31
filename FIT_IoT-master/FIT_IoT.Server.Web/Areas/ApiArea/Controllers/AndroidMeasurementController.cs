@@ -24,7 +24,7 @@ namespace FIT_IoT.Server.Web.Areas.ApiArea.Controllers
                     SensorId = s.SensorId,
                     SensorType = s.SensorType.ToString(),
                     Time = s.Date
-                }).Take(5).ToList().ToList()
+                }).Take(1).ToList()
             };
 
             return ApiResult<MeasurementVM>.OK(model);

@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
+using Android.Media;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -19,8 +20,11 @@ namespace FIT_IoT.Android.Client
     [Activity(Label = "MeasurementsActivity", MainLauncher = true)]
     public class MeasurementsActivity : Activity
     {
+       
+
         private EditText editText;
         private Button button;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -30,16 +34,19 @@ namespace FIT_IoT.Android.Client
             editText = FindViewById<EditText>(Resource.Id.editText1);
             button = FindViewById<Button>(Resource.Id.button1);
 
+
             toaster("started");
-           // new Task(() => { doIt(); }).Start();
-            doIt();
+
+            //A a = new A(this);
+            //a.Start();
 
             button.Click += delegate
             {
-                doIt();
+              //  a.doIt();
             };
 
-
+                   var intent = new Intent(this, typeof(MyService));
+                   this.StartService(intent);
         }
 
         private void toaster(string s)
@@ -47,28 +54,6 @@ namespace FIT_IoT.Android.Client
             Toast.MakeText(this, s, ToastLength.Long).Show();
         }
 
-        private void doIt()
-        {
-           
-                ApiResult<MeasurementVM> podaci = MyApiRequests.Get<MeasurementVM>(MeasurementVM.Action_GetLast);
-            
-                if (!podaci.isException)
-                {
-                    string s = string.Empty;
-                    foreach (var x in podaci.value.Rows)
-                    {
-                        if (x.Time != null)
-                            s += (x.Time?.ToString("dd.MM.yyyy HH:mm:ss")) + "\t" + x.Value + "\n";
-                    }
-                //editText.Text = s;
-
-                    toaster(s);
-
-            }
-                else
-                {
-                       toaster(podaci.exceptionMessage);
-                }
-            }
-        }
+      
     }
+}
